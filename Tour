@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тур 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="images/tour1-beach.jpg" alt="Тур 1" class="header-image">
+            <h1>Тур на пляжи Сочи</h1>
+            <nav>
+                <a href="index.html">Главная</a>
+                <a href="tour1.html">Тур 1</a>
+                <a href="tour2.html">Тур 2</a>
+                <a href="contact.html">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <section>
+        <h2>Забронируйте тур</h2>
+        <form action="send_booking.php" method="POST">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="phone">Телефон:</label>
+            <input type="text" id="phone" name="phone" required><br>
+
+            <label for="tour">Выберите тур:</label>
+            <input type="text" id="tour" name="tour" value="Тур на пляжи Сочи" readonly><br>
+
+            <label for="dates">Выберите даты:</label>
+            <input type="date" id="start-date" name="start_date" required>
+            <input type="date" id="end-date" name="end_date" required><br>
+
+            <button type="submit">Забронировать</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Туристическая Компания. Все права защищены.</p>
+    </footer>
+</body>
+</html>
