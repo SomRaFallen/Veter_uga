@@ -3,152 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Регистрация и Вход</title>
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js"></script>
+    <title>Туристическая Компания</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Добро пожаловать на сайт</h1>
+    <header>
+        <div class="header-content">
+            <img src="images/main-beach.jpg" alt="Морской Пейзаж" class="header-image">
+            <h1>Добро пожаловать в нашу туристическую компанию!</h1>
+            <nav>
+                <a href="index.html">Главная</a>
+                <a href="tour1.html">Тур 1</a>
+                <a href="tour2.html">Тур 2</a>
+                <a href="contact.html">Контакты</a>
+            </nav>
+        </div>
+    </header>
 
-    <!-- Форма регистрации -->
-    <form id="register-form">
-        <h2>Регистрация</h2>
-        <label for="reg-email">Email:</label>
-        <input type="email" id="reg-email" name="reg-email" required/><br>
+    <section>
+        <h2>Наши туры</h2>
+        <p>Выберите один из предложенных туров и забронируйте путешествие вашей мечты!</p>
+    </section>
 
-        <label for="reg-password">Пароль:</label>
-        <input type="password" id="reg-password" name="reg-password" required/><br>
-
-        <button type="submit">Зарегистрироваться</button>
-    </form>
-
-    <!-- Форма входа -->
-    <form id="login-form">
-        <h2>Вход</h2>
-        <label for="login-email">Email:</label>
-        <input type="email" id="login-email" name="login-email" required/><br>
-
-        <label for="login-password">Пароль:</label>
-        <input type="password" id="login-password" name="login-password" required/><br>
-
-        <button type="submit">Войти</button>
-    </form>
-
-    <!-- Кнопка выхода -->
-    <button id="logout-btn" style="display: none;">Выйти</button>
-
-    <div id="user-info" style="display: none;">
-        <h3>Вы вошли как: <span id="user-email"></span></h3>
-    </div>
-
-    <script>
-        // Firebase конфигурация
-        const firebaseConfig = {
-            apiKey: "AIzaSyCNbZD0I8fGPMD58mPGNAKem3eQQWCz60o",
-            authDomain: "veter-uga.firebaseapp.com",
-            projectId: "veter-uga",
-            storageBucket: "veter-uga.firebasestorage.app",
-            messagingSenderId: "719482994973",
-            appId: "1:719482994973:web:d2dea99cdb1529b54d21f4",
-            measurementId: "G-ZKFMG1LFCF"
-        };
-
-        // Инициализация Firebase
-        const app = firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth();
-        const db = firebase.firestore();
-
-        // Форма регистрации
-        const registerForm = document.getElementById('register-form');
-        const regEmail = document.getElementById('reg-email');
-        const regPassword = document.getElementById('reg-password');
-
-        registerForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const email = regEmail.value;
-            const password = regPassword.value;
-
-            if (!email || !password) {
-                alert('Заполните все поля!');
-                return;
-            }
-
-            auth.createUserWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    alert('Вы успешно зарегистрированы!');
-
-                    // Сохраняем пользователя в Firestore
-                    db.collection("users").doc(user.uid).set({
-                        email: user.email
-                    });
-
-                    console.log('Пользователь создан:', user);
-                })
-                .catch((error) => {
-                    alert('Ошибка при регистрации: ' + error.message);
-                });
-        });
-
-        // Форма входа
-        const loginForm = document.getElementById('login-form');
-        const loginEmail = document.getElementById('login-email');
-        const loginPassword = document.getElementById('login-password');
-
-        loginForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const email = loginEmail.value;
-            const password = loginPassword.value;
-
-            if (!email || !password) {
-                alert('Заполните все поля!');
-                return;
-            }
-
-            auth.signInWithEmailAndPassword(email, password)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    alert('Вы успешно вошли!');
-
-                    document.getElementById('user-email').textContent = user.email;
-                    document.getElementById('logout-btn').style.display = 'inline-block';
-                    document.getElementById('user-info').style.display = 'block';
-
-                    console.log('Пользователь вошел:', user);
-                })
-                .catch((error) => {
-                    alert('Ошибка при входе: ' + error.message);
-                });
-        });
-
-        // Кнопка выхода
-        const logoutBtn = document.getElementById('logout-btn');
-        logoutBtn.addEventListener('click', () => {
-            auth.signOut().then(() => {
-                alert('Вы вышли из системы!');
-                document.getElementById('user-info').style.display = 'none';
-                logoutBtn.style.display = 'none';
-            }).catch((error) => {
-                alert('Ошибка при выходе: ' + error.message);
-            });
-        });
-
-        // Проверка авторизации
-        auth.onAuthStateChanged(function (user) {
-            if (user) {
-                document.getElementById('user-email').textContent = user.email;
-                document.getElementById('logout-btn').style.display = 'inline-block';
-                document.getElementById('user-info').style.display = 'block';
-            } else {
-                document.getElementById('user-info').style.display = 'none';
-                document.getElementById('logout-btn').style.display = 'none';
-            }
-        });
-    </script>
+    <footer>
+        <p>&copy; 2025 Туристическая Компания. Все права защищены.</p>
+    </footer>
 </body>
 </html>
