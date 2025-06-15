@@ -2,105 +2,176 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Турагентство Ветер Юга</title>
   <style>
     body {
       font-family: Arial, sans-serif;
+      background: #f0f8ff;
       margin: 0;
-      background: #f4f8fc;
-      color: #333;
+      padding: 0;
+      color: #222;
     }
     header {
-      background: #2a9df4;
+      background-color: #2a9df4;
       color: white;
-      padding: 20px;
+      padding: 30px 20px;
       text-align: center;
     }
-    section {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 2.5em;
     }
-    h1, h2 {
+    header p {
+      font-size: 1.2em;
+    }
+    main {
+      max-width: 700px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+    h2 {
       color: #2a9df4;
+      margin-top: 40px;
+      margin-bottom: 15px;
+    }
+    ul {
+      list-style: disc inside;
+      padding-left: 0;
+    }
+    ul li {
+      margin-bottom: 10px;
+      font-size: 1.1em;
+    }
+    .hero {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .hero h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 1.3em;
+      margin-bottom: 15px;
+    }
+    .offer {
+      background: #d9f0ff;
+      border: 2px solid #2a9df4;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 30px 0;
+      text-align: center;
+    }
+    .offer h3 {
+      margin: 0 0 15px;
+      font-size: 1.6em;
+    }
+    .offer p {
+      font-size: 1.2em;
+      margin: 0 0 20px;
     }
     .btn {
-      background: #2a9df4;
-      color: white;
-      padding: 12px 25px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
       display: inline-block;
-      margin-top: 20px;
+      background-color: #2a9df4;
+      color: white;
+      padding: 12px 30px;
+      font-size: 1.2em;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.3s;
     }
-    footer {
-      background: #eee;
+    .btn:hover {
+      background-color: #1a7adf;
+    }
+    form {
+      background: white;
       padding: 20px;
-      text-align: center;
-      font-size: 14px;
-      color: #555;
-    }
-    .offer, .form-box {
-      background: #fff;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      margin: 30px 0;
-    }
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 20px 0;
-    }
-    .gallery img {
-      width: calc(33% - 10px);
       border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+    }
+    form label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
     }
     form input, form textarea {
       width: 100%;
       padding: 10px;
-      margin-top: 10px;
+      font-size: 1em;
+      margin-bottom: 15px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    form textarea {
+      resize: vertical;
+      min-height: 80px;
     }
     form button {
-      margin-top: 15px;
-      background: #2a9df4;
+      background-color: #2a9df4;
       color: white;
-      padding: 10px 20px;
       border: none;
-      border-radius: 5px;
+      padding: 12px 25px;
+      font-size: 1.1em;
+      border-radius: 6px;
       cursor: pointer;
+      transition: background-color 0.3s;
     }
-    .chat-buttons {
-      margin-top: 20px;
+    form button:hover {
+      background-color: #1a7adf;
     }
-    .chat-buttons a {
-      display: inline-block;
-      margin-right: 10px;
-      padding: 10px 15px;
-      background: #25D366;
-      color: white;
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #eee;
+      font-size: 0.9em;
+      color: #555;
+    }
+    .contacts {
+      margin-bottom: 30px;
+      font-size: 1.1em;
+    }
+    .contacts a {
+      color: #2a9df4;
       text-decoration: none;
-      border-radius: 5px;
     }
-    .chat-buttons a.telegram {
-      background: #0088cc;
+    .contacts a:hover {
+      text-decoration: underline;
+    }
+    .chat-links {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .chat-links a {
+      display: inline-block;
+      margin: 0 10px;
+      padding: 12px 20px;
+      border-radius: 6px;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+    .chat-links a.whatsapp {
+      background-color: #25d366;
+    }
+    .chat-links a.whatsapp:hover {
+      background-color: #1ebe57;
+    }
+    .chat-links a.telegram {
+      background-color: #0088cc;
+    }
+    .chat-links a.telegram:hover {
+      background-color: #006699;
     }
     iframe {
       width: 100%;
       height: 300px;
-      border: 0;
-      margin-top: 20px;
-      border-radius: 10px;
-    }
-    @media (max-width: 768px) {
-      .gallery img {
-        width: 100%;
-      }
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 40px;
     }
   </style>
 </head>
@@ -108,53 +179,64 @@
 
 <header>
   <h1>Турагентство «Ветер Юга»</h1>
-  <p>Ваш отдых начинается здесь</p>
+  <p>Лучшие туры из Саратова в Сочи по выгодным ценам</p>
 </header>
 
-<section>
-  <h2>🌴 Наши услуги</h2>
+<main>
+
+  <section class="hero">
+    <h2>Добро пожаловать в турфирму «Ветер Юга»!</h2>
+    <p>Лучший тур: 7 дней в Сочи всего за <strong>25 000 ₽</strong></p>
+    <img 
+      src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" 
+      alt="Пляж Сочи — лучший тур" 
+      style="width:100%; max-width:700px; border-radius:12px; margin: 20px 0;"
+    />
+    <a href="tel:+79658848887" class="btn">Позвонить и забронировать</a>
+  </section>
+
+  <h2>Наши услуги</h2>
   <ul>
-    <li>Подбор туров по России: Сочи, Крым, Кавказ</li>
-    <li>Групповые поездки, экскурсии</li>
-    <li>Бронирование билетов и отелей</li>
-    <li>Индивидуальный маршрут под ваш бюджет</li>
+    <li>Организация туров на 7 дней в Сочи</li>
+    <li>Бронирование перелётов и отелей</li>
+    <li>Индивидуальные и групповые туры</li>
+    <li>Консультации и помощь в планировании отдыха</li>
   </ul>
 
-  <div class="offer">
-    <h2>🔥 Горящий тур в Сочи — 7 дней за 25 000 ₽</h2>
-    <p>Отдых у моря с перелётом и проживанием. Количество мест ограничено!</p>
-    <a href="tel:+79000000000" class="btn">Забронировать</a>
-  </div>
-
-  <h2>📸 Галерея туров</h2>
-  <div class="gallery">
-    <img src="https://source.unsplash.com/300x200/?beach" alt="Море" />
-    <img src="https://source.unsplash.com/300x200/?mountains" alt="Горы" />
-    <img src="https://source.unsplash.com/300x200/?resort" alt="Отель" />
-  </div>
-
-  <div class="form-box">
-    <h2>📩 Оставьте заявку</h2>
+  <section>
+    <h2>Оставьте заявку</h2>
     <form action="mailto:info@veter-yuga.ru" method="post" enctype="text/plain">
-      <input type="text" name="Имя" placeholder="Ваше имя" required>
-      <input type="email" name="Email" placeholder="Ваш email" required>
-      <textarea name="Комментарий" placeholder="Куда хотите поехать? Когда?" rows="4"></textarea>
-      <button type="submit">Отправить</button>
+      <label for="name">Ваше имя</label>
+      <input type="text" id="name" name="Имя" required>
+
+      <label for="phone">Телефон</label>
+      <input type="tel" id="phone" name="Телефон" required>
+
+      <label for="message">Комментарий (например, даты поездки или пожелания)</label>
+      <textarea id="message" name="Комментарий"></textarea>
+
+      <button type="submit">Отправить заявку</button>
     </form>
-  </div>
+  </section>
 
-  <div class="chat-buttons">
-    <a href="https://wa.me/79000000000" target="_blank">Написать в WhatsApp</a>
-    <a href="https://t.me/username" class="telegram" target="_blank">Написать в Telegram</a>
-  </div>
+  <section class="contacts">
+    <p>Телефон: <a href="tel:+79658848887">+7 (965) 884-88-87</a></p>
+    <p>Email: <a href="mailto:info@veter-yuga.ru">info@veter-yuga.ru</a></p>
+  </section>
 
-  <h2>📍 Где мы находимся</h2>
-  <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Adummy&source=constructor" title="Карта офиса"></iframe>
+  <section class="chat-links">
+    <a href="https://wa.me/79658848887" target="_blank" class="whatsapp">Написать в WhatsApp</a>
+    <a href="https://t.me/+79658848887" target="_blank" class="telegram">Написать в Telegram</a>
+  </section>
 
-  <h2>📞 Контакты</h2>
-  <p>Телефон: <a href="tel:+79000000000">+7 (900) 000-00-00</a></p>
-  <p>Email: <a href="mailto:info@veter-yuga.ru">info@veter-yuga.ru</a></p>
-</section>
+  <section>
+    <h2>Где мы находимся</h2>
+    <iframe 
+      src="https://yandex.ru/map-widget/v1/?um=constructor%3Adummy&source=constructor" 
+      title="Карта офиса">
+    </iframe>
+  </section>
+</main>
 
 <footer>
   © 2025 Турагентство «Ветер Юга» | Все права защищены
