@@ -1,0 +1,16 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["name"];
+    $phone = $_POST["phone"];
+    $tour = $_POST["tour"];
+    $start_date = $_POST["start_date"];
+    $end_date = $_POST["end_date"];
+    
+    $to = "deadspaces3444@gmail.com";
+    $subject = "Новая заявка на тур";
+    $message = "Имя: $name\nТелефон: $phone\nТур: $tour\nДата начала: $start_date\nДата окончания: $end_date";
+    $headers = "From: no-reply@yourwebsite.com";
+
+    mail($to, $subject, $message, $headers);
+}
+?>
