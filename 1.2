@@ -1,0 +1,14 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST["name"];
+    $email = $_POST["email"];
+    $message = $_POST["message"];
+    
+    $to = "deadspaces3444@gmail.com";
+    $subject = "Сообщение с сайта";
+    $message = "Имя: $name\nEmail: $email\nСообщение: $message";
+    $headers = "From: no-reply@yourwebsite.com";
+
+    mail($to, $subject, $message, $headers);
+}
+?>
