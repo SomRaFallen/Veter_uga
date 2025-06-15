@@ -1,325 +1,154 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Турагентство «Ветер Юга»</title>
-<style>
-  /* Сброс */
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-  }
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f0f9ff;
-    color: #222;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  /* Шапка с анимацией волн */
-  header {
-    position: relative;
-    height: 220px;
-    background: linear-gradient(to bottom, #70c5f6, #a0e9ff);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-shadow: 0 0 6px rgba(0,0,0,0.3);
-  }
-  header h1 {
-    font-size: 2.5em;
-    margin-bottom: 5px;
-  }
-  header p {
-    font-size: 1.2em;
-  }
-
-  /* Волны */
-  .waves {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 60px;
-    background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg') repeat-x;
-    background-size: 100px 60px;
-    animation: wave-animation 8s linear infinite;
-  }
-  @keyframes wave-animation {
-    0% { background-position-x: 0; }
-    100% { background-position-x: 1000px; }
-  }
-
-  /* Кнопки WhatsApp и Telegram */
-  .contact-buttons {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    display: flex;
-    gap: 15px;
-  }
-  .contact-buttons a {
-    display: inline-block;
-    width: 36px; height: 36px;
-    background-color: #25d366; /* WhatsApp green */
-    border-radius: 50%;
-    text-align: center;
-    line-height: 36px;
-    color: white;
-    font-size: 20px;
-    transition: background-color 0.3s;
-    text-decoration: none;
-  }
-  .contact-buttons a.telegram {
-    background-color: #0088cc;
-  }
-  .contact-buttons a:hover {
-    opacity: 0.8;
-  }
-
-  /* Навигация (вкладки) */
-  nav {
-    background: #0288d1;
-    display: flex;
-    justify-content: center;
-  }
-  nav button {
-    background: transparent;
-    border: none;
-    padding: 14px 30px;
-    font-size: 1.1em;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  nav button.active, nav button:hover {
-    background-color: #01579b;
-  }
-
-  main {
-    max-width: 900px;
-    margin: 25px auto 50px;
-    padding: 0 15px;
-    flex-grow: 1;
-  }
-  section {
-    display: none;
-  }
-  section.active {
-    display: block;
-  }
-
-  /* Общий стиль заголовков */
-  h2 {
-    color: #0288d1;
-    margin-bottom: 15px;
-  }
-
-  /* Курорты */
-  .resort {
-    margin-bottom: 40px;
-  }
-  .resort img {
-    width: 100%;
-    max-height: 260px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 15px;
-  }
-  .bus-seats {
-    background: #e1f5fe;
-    border-radius: 8px;
-    padding: 12px 18px;
-    margin-bottom: 15px;
-  }
-
-  /* Форма */
-  form {
-    background: #fff;
-    padding: 20px 25px;
-    border-radius: 10px;
-    box-shadow: 0 0 14px rgba(0,0,0,0.07);
-    max-width: 500px;
-  }
-  label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 600;
-  }
-  input[type=text], input[type=email], input[type=password], textarea {
-    width: 100%;
-    padding: 10px 12px;
-    margin-bottom: 15px;
-    border: 1.8px solid #cfd8dc;
-    border-radius: 6px;
-    font-size: 1em;
-  }
-  textarea {
-    resize: vertical;
-    min-height: 100px;
-  }
-  button.submit-btn {
-    background-color: #0288d1;
-    color: white;
-    padding: 12px 28px;
-    font-size: 1.1em;
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  button.submit-btn:hover {
-    background-color: #01579b;
-  }
-
-  /* Подвал */
-  footer {
-    background: #0288d1;
-    color: white;
-    padding: 15px;
-    text-align: center;
-  }
-  footer a {
-    color: #b3e5fc;
-    text-decoration: none;
-  }
-  footer a:hover {
-    text-decoration: underline;
-  }
-
-</style>
-
-<!-- Иконки WhatsApp и Telegram из FontAwesome CDN -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-/>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация и Вход</title>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-analytics.js"></script>
 </head>
 <body>
+    <h1>Добро пожаловать на сайт</h1>
 
-<header>
-  <h1>Турагентство «Ветер Юга»</h1>
-  <p>Лучшие туры из Саратова в Сочи и другие курорты</p>
-
-  <div class="contact-buttons">
-    <a href="https://wa.me/79658848887" target="_blank" aria-label="WhatsApp" rel="noopener" >
-      <i class="fab fa-whatsapp"></i>
-    </a>
-    <a href="https://t.me/+79658848887" target="_blank" aria-label="Telegram" rel="noopener" class="telegram">
-      <i class="fab fa-telegram-plane"></i>
-    </a>
-  </div>
-
-  <div class="waves"></div>
-</header>
-
-<nav>
-  <button class="tab-btn active" data-tab="resorts">Курорты</button>
-  <button class="tab-btn" data-tab="support">Техподдержка</button>
-  <button class="tab-btn" data-tab="register">Регистрация (Вход)</button>
-</nav>
-
-<main>
-  <section id="resorts" class="active">
-    <h2>Наши курорты</h2>
-
-    <div class="resort">
-      <h3>Сочи</h3>
-      <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=800&q=80" alt="Сочи - природа и отдых" />
-      <div class="bus-seats">
-        <strong>Места в автобусе:</strong>
-        <ul>
-          <li>Ряд 1-2: Комфортные места у окна и прохода</li>
-          <li>Ряд 3-5: Места с дополнительным пространством для ног</li>
-          <li>Ряд 6-8: Места для семей с детьми</li>
-          <li>Ряд 9-10: Места с кондиционером и зоной отдыха</li>
-        </ul>
-      </div>
-      <p><strong>Цена тура:</strong> 25 000 ₽ за 7 дней</p>
-    </div>
-
-    <div class="resort">
-      <h3>Лоо</h3>
-      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" alt="Лоо - природа и отдых" />
-      <div class="bus-seats">
-        <strong>Места в автобусе:</strong>
-        <ul>
-          <li>Ряд 1-3: Передние места с обзором</li>
-          <li>Ряд 4-6: Места в центре салона</li>
-          <li>Ряд 7-9: Удобные места для отдыха</li>
-          <li>Ряд 10-11: Места с дополнительным пространством для багажа</li>
-        </ul>
-      </div>
-      <p><strong>Цена тура:</strong> 22 000 ₽ за 7 дней</p>
-    </div>
-
-    <!-- Добавь остальные курорты аналогично -->
-  </section>
-
-  <section id="support">
-    <h2>Техническая поддержка</h2>
-    <p>Если у вас возникли вопросы — заполните форму, и мы свяжемся с вами.</p>
-    <form id="support-form">
-      <label for="support-name">Ваше имя</label>
-      <input type="text" id="support-name" name="support-name" required />
-      <label for="support-email">Email</label>
-      <input type="email" id="support-email" name="support-email" required />
-      <label for="support-message">Сообщение</label>
-      <textarea id="support-message" name="support-message" required></textarea>
-      <button type="submit" class="submit-btn">Отправить</button>
-    </form>
-  </section>
-
-  <section id="register">
-    <h2>Регистрация / Вход</h2>
+    <!-- Форма регистрации -->
     <form id="register-form">
-      <label for="reg-email">Email</label>
-      <input type="email" id="reg-email" name="reg-email" required />
-      <label for="reg-password">Пароль</label>
-      <input type="password" id="reg-password" name="reg-password" required />
-      <button type="submit" class="submit-btn">Войти / Зарегистрироваться</button>
+        <h2>Регистрация</h2>
+        <label for="reg-email">Email:</label>
+        <input type="email" id="reg-email" name="reg-email" required/><br>
+
+        <label for="reg-password">Пароль:</label>
+        <input type="password" id="reg-password" name="reg-password" required/><br>
+
+        <button type="submit">Зарегистрироваться</button>
     </form>
-  </section>
-</main>
 
-<footer>
-  <p>Телефон: <a href="tel:+79658848887">+7 (965) 884-88-87</a> | Email: <a href="mailto:info@veter-yuga.ru">info@veter-yuga.ru</a></p>
-  <p>© 2025 Турагентство «Ветер Юга»</p>
-</footer>
+    <!-- Форма входа -->
+    <form id="login-form">
+        <h2>Вход</h2>
+        <label for="login-email">Email:</label>
+        <input type="email" id="login-email" name="login-email" required/><br>
 
-<script>
-  // Вкладки переключение
-  const tabs = document.querySelectorAll('nav button.tab-btn');
-  const sections = document.querySelectorAll('main > section');
+        <label for="login-password">Пароль:</label>
+        <input type="password" id="login-password" name="login-password" required/><br>
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      sections.forEach(s => s.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById(tab.dataset.tab).classList.add('active');
-    });
-  });
+        <button type="submit">Войти</button>
+    </form>
 
-  // Обработка формы техподдержки (демо)
-  document.getElementById('support-form').addEventListener('submit', e => {
-    e.preventDefault();
-    alert('Спасибо за обращение! Мы свяжемся с вами в ближайшее время.');
-    e.target.reset();
-  });
+    <!-- Кнопка выхода -->
+    <button id="logout-btn" style="display: none;">Выйти</button>
 
-  // Обработка формы регистрации (демо)
-  document.getElementById('register-form').addEventListener('submit', e => {
-    e.preventDefault();
-    alert('Функция регистрации пока не реализована.');
-    e.target.reset();
-  });
-</script>
+    <div id="user-info" style="display: none;">
+        <h3>Вы вошли как: <span id="user-email"></span></h3>
+    </div>
 
+    <script>
+        // Firebase конфигурация
+        const firebaseConfig = {
+            apiKey: "AIzaSyCNbZD0I8fGPMD58mPGNAKem3eQQWCz60o",
+            authDomain: "veter-uga.firebaseapp.com",
+            projectId: "veter-uga",
+            storageBucket: "veter-uga.firebasestorage.app",
+            messagingSenderId: "719482994973",
+            appId: "1:719482994973:web:d2dea99cdb1529b54d21f4",
+            measurementId: "G-ZKFMG1LFCF"
+        };
+
+        // Инициализация Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Форма регистрации
+        const registerForm = document.getElementById('register-form');
+        const regEmail = document.getElementById('reg-email');
+        const regPassword = document.getElementById('reg-password');
+
+        registerForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const email = regEmail.value;
+            const password = regPassword.value;
+
+            if (!email || !password) {
+                alert('Заполните все поля!');
+                return;
+            }
+
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    alert('Вы успешно зарегистрированы!');
+
+                    // Сохраняем пользователя в Firestore
+                    db.collection("users").doc(user.uid).set({
+                        email: user.email
+                    });
+
+                    console.log('Пользователь создан:', user);
+                })
+                .catch((error) => {
+                    alert('Ошибка при регистрации: ' + error.message);
+                });
+        });
+
+        // Форма входа
+        const loginForm = document.getElementById('login-form');
+        const loginEmail = document.getElementById('login-email');
+        const loginPassword = document.getElementById('login-password');
+
+        loginForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const email = loginEmail.value;
+            const password = loginPassword.value;
+
+            if (!email || !password) {
+                alert('Заполните все поля!');
+                return;
+            }
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    alert('Вы успешно вошли!');
+
+                    document.getElementById('user-email').textContent = user.email;
+                    document.getElementById('logout-btn').style.display = 'inline-block';
+                    document.getElementById('user-info').style.display = 'block';
+
+                    console.log('Пользователь вошел:', user);
+                })
+                .catch((error) => {
+                    alert('Ошибка при входе: ' + error.message);
+                });
+        });
+
+        // Кнопка выхода
+        const logoutBtn = document.getElementById('logout-btn');
+        logoutBtn.addEventListener('click', () => {
+            auth.signOut().then(() => {
+                alert('Вы вышли из системы!');
+                document.getElementById('user-info').style.display = 'none';
+                logoutBtn.style.display = 'none';
+            }).catch((error) => {
+                alert('Ошибка при выходе: ' + error.message);
+            });
+        });
+
+        // Проверка авторизации
+        auth.onAuthStateChanged(function (user) {
+            if (user) {
+                document.getElementById('user-email').textContent = user.email;
+                document.getElementById('logout-btn').style.display = 'inline-block';
+                document.getElementById('user-info').style.display = 'block';
+            } else {
+                document.getElementById('user-info').style.display = 'none';
+                document.getElementById('logout-btn').style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
