@@ -1,186 +1,161 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Турагентство Ветер Юга</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f8ff;
-      margin: 0;
-      padding: 0;
-      color: #222;
-    }
-    header {
-      background-color: #2a9df4;
-      color: white;
-      padding: 30px 20px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0 0 10px;
-      font-size: 2.5em;
-    }
-    header p {
-      font-size: 1.2em;
-    }
-    main {
-      max-width: 700px;
-      margin: 30px auto;
-      padding: 0 20px;
-    }
-    h2 {
-      color: #2a9df4;
-      margin-top: 40px;
-      margin-bottom: 15px;
-    }
-    ul {
-      list-style: disc inside;
-      padding-left: 0;
-    }
-    ul li {
-      margin-bottom: 10px;
-      font-size: 1.1em;
-    }
-    .hero {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .hero h2 {
-      font-size: 2em;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      font-size: 1.3em;
-      margin-bottom: 15px;
-    }
-    .offer {
-      background: #d9f0ff;
-      border: 2px solid #2a9df4;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 30px 0;
-      text-align: center;
-    }
-    .offer h3 {
-      margin: 0 0 15px;
-      font-size: 1.6em;
-    }
-    .offer p {
-      font-size: 1.2em;
-      margin: 0 0 20px;
-    }
-    .btn {
-      display: inline-block;
-      background-color: #2a9df4;
-      color: white;
-      padding: 12px 30px;
-      font-size: 1.2em;
-      text-decoration: none;
-      border-radius: 6px;
-      transition: background-color 0.3s;
-    }
-    .btn:hover {
-      background-color: #1a7adf;
-    }
-    form {
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-      margin-bottom: 40px;
-    }
-    form label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: bold;
-    }
-    form input, form textarea {
-      width: 100%;
-      padding: 10px;
-      font-size: 1em;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-    form textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-    form button {
-      background-color: #2a9df4;
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      font-size: 1.1em;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-    form button:hover {
-      background-color: #1a7adf;
-    }
-    footer {
-      text-align: center;
-      padding: 15px;
-      background: #eee;
-      font-size: 0.9em;
-      color: #555;
-    }
-    .contacts {
-      margin-bottom: 30px;
-      font-size: 1.1em;
-    }
-    .contacts a {
-      color: #2a9df4;
-      text-decoration: none;
-    }
-    .contacts a:hover {
-      text-decoration: underline;
-    }
-    .chat-links {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .chat-links a {
-      display: inline-block;
-      margin: 0 10px;
-      padding: 12px 20px;
-      border-radius: 6px;
-      color: white;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background-color 0.3s;
-    }
-    .chat-links a.whatsapp {
-      background-color: #25d366;
-    }
-    .chat-links a.whatsapp:hover {
-      background-color: #1ebe57;
-    }
-    .chat-links a.telegram {
-      background-color: #0088cc;
-    }
-    .chat-links a.telegram:hover {
-      background-color: #006699;
-    }
-    iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-      border-radius: 8px;
-      margin-bottom: 40px;
-    }
-    .resort {
-      margin-bottom: 50px;
-    }
-    .resort h3 {
-      color: #1a7adf;
-      margin-bottom: 12px;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Турагентство «Ветер Юга»</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0; padding: 0;
+    background: #f0f8ff;
+    color: #222;
+  }
+  header {
+    background: #2a9df4;
+    color: white;
+    padding: 20px 10px;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0;
+  }
+  nav {
+    background: #1f7ae0;
+    display: flex;
+    justify-content: center;
+  }
+  nav button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.1em;
+    padding: 15px 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  nav button:hover, nav button.active {
+    background: #175bb5;
+  }
+  main {
+    max-width: 800px;
+    margin: 20px auto 60px;
+    padding: 0 15px;
+  }
+  section {
+    display: none;
+  }
+  section.active {
+    display: block;
+  }
+  h2 {
+    color: #2a9df4;
+  }
+  .hero img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 15px 0;
+  }
+  .btn {
+    background-color: #2a9df4;
+    color: white;
+    padding: 12px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 15px 0;
+    font-size: 1.1em;
+    cursor: pointer;
+  }
+  .btn:hover {
+    background-color: #1a7adf;
+  }
+  .resort {
+    margin-bottom: 40px;
+  }
+  .resort img {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  iframe {
+    width: 100%;
+    height: 280px;
+    border: none;
+    border-radius: 8px;
+    margin: 10px 0 15px;
+  }
+  .bus-seats {
+    background: #e6f2ff;
+    border: 1px solid #a3c2f0;
+    border-radius: 6px;
+    padding: 15px;
+    font-size: 1em;
+  }
+  .bus-seats ul {
+    margin: 0; padding-left: 20px;
+  }
+  form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  }
+  form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+  }
+  form input, form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  form textarea {
+    resize: vertical;
+    min-height: 80px;
+  }
+  form button {
+    background-color: #2a9df4;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  form button:hover {
+    background-color: #1a7adf;
+  }
+  .payment-section {
+    margin-top: 15px;
+    background: #d9f0ff;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  .payment-section label {
+    font-weight: normal;
+    margin-right: 10px;
+  }
+  .contacts {
+    margin-top: 20px;
+    font-size: 1.1em;
+  }
+  .contacts a {
+    color: #2a9df4;
+    text-decoration: none;
+  }
+  .contacts a:hover {
+    text-decoration: underline;
+  }
+</style>
 </head>
 <body>
 
@@ -189,94 +164,172 @@
   <p>Лучшие туры из Саратова в Сочи по выгодным ценам</p>
 </header>
 
-<main>
+<nav>
+  <button class="tab-btn active" data-tab="home">Главная</button>
+  <button class="tab-btn" data-tab="resorts">Курорты</button>
+  <button class="tab-btn" data-tab="support">Техподдержка</button>
+  <button class="tab-btn" data-tab="register">Регистрация</button>
+</nav>
 
-  <section class="hero">
-    <h2>Добро пожаловать в турфирму «Ветер Юга»!</h2>
-    <p>Лучший тур: 7 дней в Сочи всего за <strong>25 000 ₽</strong></p>
-    <img 
-      src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" 
-      alt="Пляж Сочи — лучший тур" 
-      style="width:100%; max-width:700px; border-radius:12px; margin: 20px 0;"
-    />
-    <a href="tel:+79658848887" class="btn">Позвонить и забронировать</a>
+<main>
+  <section id="home" class="active">
+    <div class="hero">
+      <h2>Добро пожаловать в турфирму «Ветер Юга»!</h2>
+      <p>Лучший тур: 7 дней в Сочи всего за <strong>25 000 ₽</strong></p>
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Пляж Сочи — лучший тур" />
+      <a href="tel:+79658848887" class="btn">Позвонить и забронировать</a>
+    </div>
+    <h2>Наши услуги</h2>
+    <ul>
+      <li>Организация туров на 7 дней в Сочи и другие курорты</li>
+      <li>Бронирование перелётов и отелей</li>
+      <li>Индивидуальные и групповые туры</li>
+      <li>Консультации и помощь в планировании отдыха</li>
+    </ul>
   </section>
 
-  <h2>Наши услуги</h2>
-  <ul>
-    <li>Организация туров на 7 дней в Сочи</li>
-    <li>Бронирование перелётов и отелей</li>
-    <li>Индивидуальные и групповые туры</li>
-    <li>Консультации и помощь в планировании отдыха</li>
-  </ul>
-
-  <section>
-    <h2>Курорты и календари</h2>
+  <section id="resorts">
+    <h2>Курорты, календари и оплата</h2>
 
     <div class="resort">
       <h3>Сочи</h3>
-      <iframe src="https://calendar.google.com/calendar/embed?src=ru.russian%23holiday%40group.v.calendar.google.com&ctz=Europe%2FMoscow" style="border: 0"></iframe>
+      <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?auto=format&fit=crop&w=700&q=80" alt="Природа и отдых в Сочи" />
+      <iframe src="https://calendar.google.com/calendar/embed?src=ru.russian%23holiday%40group.v.calendar.google.com&ctz=Europe%2FMoscow"></iframe>
+      <div class="bus-seats">
+        <strong>Места в автобусе:</strong>
+        <ul>
+          <li>Ряд 1-2: Комфортные места у окна и прохода</li>
+          <li>Ряд 3-5: Места с дополнительным пространством для ног</li>
+          <li>Ряд 6-8: Места для семей с детьми</li>
+          <li>Ряд 9-10: Места с кондиционером и дополнительной зоной отдыха</li>
+        </ul>
+      </div>
+      <div class="payment-section">
+        <strong>Оплата тура:</strong> 25 000 ₽ за 7 дней<br />
+        <button onclick="alert('Оплата для Сочи пока не реализована')">Оплатить</button>
+      </div>
     </div>
 
     <div class="resort">
       <h3>Лоо</h3>
-      <iframe src="https://calendar.google.com/calendar/embed?src=ru.russian%23holiday%40group.v.calendar.google.com&ctz=Europe%2FMoscow" style="border: 0"></iframe>
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80" alt="Природа и отдых в Лоо" />
+      <iframe src="https://calendar.google.com/calendar/embed?src=ru.russian%23holiday%40group.v.calendar.google.com&ctz=Europe%2FMoscow"></iframe>
+      <div class="bus-seats">
+        <strong>Места в автобусе:</strong>
+        <ul>
+          <li>Ряд 1-3: Передние места с обзором</li>
+          <li>Ряд 4-6: Места в центре салона</li>
+          <li>Ряд 7-9: Удобные места для отдыха</li>
+          <li>Ряд 10-11: Места с дополнительным пространством для багажа</li>
+        </ul>
+      </div>
+      <div class="payment-section">
+        <strong>Оплата тура:</strong> 22 000 ₽ за 7 дней<br />
+        <button onclick="alert('Оплата для Лоо пока не реализована')">Оплатить</button>
+      </div>
     </div>
 
     <div class="resort">
       <h3>Минеральные Воды</h3>
-      <iframe src="https://calendar.google.com/calendar/embed?src=ru.russian%23holiday%40group.v.calendar.google.com&ctz=Europe%2FMoscow" style="border: 0"></iframe>
+      <img src="https://images.unsplash.com/photo-1526483360052-45f59d1306d0?auto=format&fit=crop&w=700&q=80" alt="Природа и отдых в Минеральных Водах" />
+      <iframe src="https://calendar.google.com/calendar/embed?src=ru.russian%23holiday%40group.v.calendar.google.com&ctz=Europe%2FMoscow"></iframe>
+      <div class="bus-seats">
+        <strong>Места в автобусе:</strong>
+        <ul>
+          <li>Ряд 1-2: Места с улучшенной амортизацией</li>
+          <li>Ряд 3-5: Места у окна с видом на горы</li>
+          <li>Ряд 6-8: Места с дополнительным пространством</li>
+          <li>Ряд 9-10: Места для комфортного отдыха в дороге</li>
+        </ul>
+      </div>
+      <div class="payment-section">
+        <strong>Оплата тура:</strong> 24 000 ₽ за 7 дней<br />
+        <button onclick="alert('Оплата для Минеральных Вод пока не реализована')">Оплатить</button>
+      </div>
     </div>
 
     <div class="resort">
       <h3>Бийск</h3>
-      <iframe src="https://calendar.google.com/calendar/embed?src=ru.russian%23holiday%40group.v.calendar.google.com&ctz=Europe%2FMoscow" style="border: 0"></iframe>
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=700&q=80" alt="Природа и отдых в Бийске" />
+      <iframe src="https://calendar.google.com/calendar/embed?src=ru.russian%23holiday%40group.v.calendar.google.com&ctz=Europe%2FMoscow"></iframe>
+      <div class="bus-seats">
+        <strong>Места в автобусе:</strong>
+        <ul>
+          <li>Ряд 1-2: Места у окна с панорамным видом</li>
+          <li>Ряд 3-5: Удобные места для длительных поездок</li>
+          <li>Ряд 6-7: Места с дополнительной подставкой для ног</li>
+          <li>Ряд 8-10: Места для отдыха и сна</li>
+        </ul>
+      </div>
+      <div class="payment-section">
+        <strong>Оплата тура:</strong> 23 000 ₽ за 7 дней<br />
+        <button onclick="alert('Оплата для Бийска пока не реализована')">Оплатить</button>
+      </div>
     </div>
 
     <div class="resort">
       <h3>Горноалтайск</h3>
-      <iframe src="https://calendar.google.com/calendar/embed?src=ru.russian%23holiday%40group.v.calendar.google.com&ctz=Europe%2FMoscow" style="border: 0"></iframe>
+      <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=700&q=80" alt="Природа и отдых в Горноалтайске" />
+      <iframe src="https://calendar.google.com/calendar/embed?src=ru.russian%23holiday%40group.v.calendar.google.com&ctz=Europe%2FMoscow"></iframe>
+      <div class="bus-seats">
+        <strong>Места в автобусе:</strong>
+        <ul>
+          <li>Ряд 1-3: Передние места с дополнительной поддержкой спины</li>
+          <li>Ряд 4-6: Места у окна с красивым видом</li>
+          <li>Ряд 7-9: Удобные места с подушками</li>
+          <li>Ряд 10-11: Места для отдыха с дополнительным пространством</li>
+        </ul>
+      </div>
+      <div class="payment-section">
+        <strong>Оплата тура:</strong> 26 000 ₽ за 7 дней<br />
+        <button onclick="alert('Оплата для Горноалтайска пока не реализована')">Оплатить</button>
+      </div>
     </div>
   </section>
 
-  <section>
-    <h2>Оставьте заявку</h2>
-    <form action="mailto:info@veter-yuga.ru" method="post" enctype="text/plain">
-      <label for="name">Ваше имя</label>
-      <input type="text" id="name" name="Имя" required>
-
-      <label for="phone">Телефон</label>
-      <input type="tel" id="phone" name="Телефон" required>
-
-      <label for="message">Комментарий (например, даты поездки или пожелания)</label>
-      <textarea id="message" name="Комментарий"></textarea>
-
-      <button type="submit">Отправить заявку</button>
+  <section id="support">
+    <h2>Техподдержка</h2>
+    <p>Если у вас возникли вопросы, заполните форму ниже, и мы свяжемся с вами в ближайшее время.</p>
+    <form id="support-form">
+      <label for="support-name">Ваше имя</label>
+      <input type="text" id="support-name" name="support-name" required />
+      <label for="support-email">Email</label>
+      <input type="email" id="support-email" name="support-email" required />
+      <label for="support-message">Сообщение</label>
+      <textarea id="support-message" name="support-message" required></textarea>
+      <button type="submit">Отправить</button>
     </form>
   </section>
 
-  <section class="contacts">
-    <p>Телефон: <a href="tel:+79658848887">+7 (965) 884-88-87</a></p>
-    <p>Email: <a href="mailto:info@veter-yuga.ru">info@veter-yuga.ru</a></p>
-  </section>
-
-  <section class="chat-links">
-    <a href="https://wa.me/79658848887" target="_blank" class="whatsapp">Написать в WhatsApp</a>
-    <a href="https://t.me/+79658848887" target="_blank" class="telegram">Написать в Telegram</a>
-  </section>
-
-  <section>
-    <h2>Где мы находимся</h2>
-    <iframe 
-      src="https://yandex.ru/map-widget/v1/?um=constructor%3Adummy&source=constructor" 
-      title="Карта офиса">
-    </iframe>
+  <section id="register">
+    <h2>Регистрация</h2>
+    <form id="register-form">
+      <label for="reg-name">Имя</label>
+      <input type="text" id="reg-name" name="reg-name" required />
+      <label for="reg-email">Email</label>
+      <input type="email" id="reg-email" name="reg-email" required />
+      <label for="reg-password">Пароль</label>
+      <input type="password" id="reg-password" name="reg-password" required />
+      <label for="reg-password-confirm">Подтверждение пароля</label>
+      <input type="password" id="reg-password-confirm" name="reg-password-confirm" required />
+      <button type="submit">Зарегистрироваться</button>
+    </form>
   </section>
 </main>
 
 <footer>
-  © 2025 Турагентство «Ветер Юга» | Все права защищены
+  <p>Телефон: <a href="tel:+79658848887">+7 (965) 884-88-87</a> | Email: <a href="mailto:info@veter-yuga.ru">info@veter-yuga.ru</a></p>
+  <p>© 2025 Турагентство «Ветер Юга»</p>
 </footer>
 
-</body>
-</html>
+<script>
+  // Табы
+  const tabs = document.querySelectorAll('nav button.tab-btn');
+  const sections = document.querySelectorAll('main > section');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('active'));
+      tab.classList.add('active');
+      const activeSection = document.getElementBy
