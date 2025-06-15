@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="images/contact.jpg" alt="Контакты" class="header-image">
+            <h1>Свяжитесь с нами</h1>
+            <nav>
+                <a href="index.html">Главная</a>
+                <a href="tour1.html">Тур 1</a>
+                <a href="tour2.html">Тур 2</a>
+                <a href="contact.html">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <section>
+        <h2>Форма обратной связи</h2>
+        <form action="send_contact.php" method="POST">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="message">Сообщение:</label><br>
+            <textarea id="message" name="message" required></textarea><br>
+
+            <button type="submit">Отправить</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Туристическая Компания. Все права защищены.</p>
+    </footer>
+</body>
+</html>
